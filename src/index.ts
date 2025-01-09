@@ -1,8 +1,13 @@
 import CommentClass from './comment';
-import User from './user';
 
 class Main {
-    
+    constructor() {
+        this.init();
+    }
+
+    private init(): void {
+        new CommentClass();
+    }
 }
 
-const main = new Main();
+new Main();
