@@ -1,24 +1,23 @@
-import User from './user';
+export default class CommentForm {
+    user: null | { fullName: string, photoUrl: string }
 
-export default class CommentClass {
-    constructor() {
+    constructor(user: { fullName: string, photoUrl: string }) {
+        this.user = user;
         this.insertCommentInput();
     }
 
     private async insertCommentInput(): Promise<void> {
-        const user = await User.createUserFromApi();
-
         const commentInputContainer = document.createElement('div');
         commentInputContainer.className = 'comment-input';
 
         const photo = document.createElement('img');
         photo.className = 'photo';
-        photo.src = user.photoUrl;
+        photo.src = this.user!.photoUrl;
         photo.alt = 'Аватар';
 
         const name = document.createElement('p');
         name.className = 'name';
-        name.textContent = user.fullName;
+        name.textContent = this.user!.fullName;
 
         const textArea = document.createElement('textarea');
         textArea.id = 'commentInput';

@@ -1,13 +1,11 @@
 export default class User {
-    fullName: string;
-    photoUrl: string;
+    user: null | { fullName: string, photoUrl: string }
 
-    private constructor(fullName: string, photoUrl: string) {
-        this.fullName = fullName;
-        this.photoUrl = photoUrl;
+    constructor() {
+        this.user = null
     }
 
-    static async createUserFromApi(): Promise<User> {
+    async createUserFromApi(): Promise<void> {
         const response = await fetch('https://randomuser.me/api/');
         const person = await response.json();
 
@@ -16,6 +14,13 @@ export default class User {
         const fullName = `${firstName} ${lastName}`;
         const photoUrl = person.results[0].picture.medium;
 
-        return new User(fullName, photoUrl);
+        this.user = {
+            fullName,
+            photoUrl
+        }
+    }
+
+    getUser(): { fullName: string, photoUrl: string } | null {
+        return this.user
     }
 }

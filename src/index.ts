@@ -1,13 +1,18 @@
-import CommentClass from './comment';
+import CommentForm from './comment-form';
+import User from './user';
 
-class Main {
-    constructor() {
-        this.init();
-    }
+function main(): void {
+    const userInstance = new User();
 
-    private init(): void {
-        new CommentClass();
-    }
+    userInstance.createUserFromApi().then(() => {
+        const user = userInstance.getUser();
+
+        if (user) {
+            const commentForm = new CommentForm(user);
+        } else {
+            console.error('User not created');
+        }
+    });
 }
 
-new Main();
+main();
