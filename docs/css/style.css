@@ -221,4 +221,15 @@ body {
     background: #A1A1A1;
     color: #000;
     font-size: 18px;
+    cursor: pointer;
+}
+
+.comment-output {
+    display: grid;
+    /* grid-template-areas:
+        "photo name limit ."
+        "photo input input button"; */
+    grid-template-columns: 91px 1fr;
+    grid-auto-rows: min-content;
+    margin-bottom: 40px;
 }

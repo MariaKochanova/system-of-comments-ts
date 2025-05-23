@@ -26,6 +26,7 @@ export default class CommentForm {
         textArea.maxLength = 1000;
 
         const button = document.createElement('button');
+        button.id = 'commentInputBtn';
         button.className = 'comment-input__btn';
         button.textContent = 'Отправить';
 
